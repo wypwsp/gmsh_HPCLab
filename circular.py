@@ -18,7 +18,7 @@ mesh_coef_vertical = 1.06
 # constants(no modifications unless necessary)
 bias_coef = 0.8
 sqrt2 = 1.414213562373095
-bias = radius * (1. + bias_coef)
+bias = radius * (1.00 + bias_coef)
 
 gmsh.model.geo.addPoint(0, 0, 0, tag=1)
 gmsh.model.geo.addPoint(width, 0, 0, tag=2)
