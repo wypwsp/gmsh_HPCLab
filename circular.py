@@ -3,7 +3,7 @@ import sys
 
 # Before using any functions in the Python API, Gmsh must be initialized:
 gmsh.initialize()
-gmsh.model.add("circular1")
+gmsh.model.add("circular2")
 
 # geological parameters
 radius = 6.0
