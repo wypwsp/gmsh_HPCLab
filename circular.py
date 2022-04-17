@@ -1,24 +1,33 @@
+# -*- coding:utf-8 -*-
+# Author :            Qi Wang, Tongji Univ. <wangqi14@tongji.edu.cn>
+# Established at :    2021/3/1 00:00
+# Modified at :       2022/4/17 23:11
+# Project:
+
 import gmsh
 import sys
 
 # Before using any functions in the Python API, Gmsh must be initialized:
 gmsh.initialize()
-gmsh.model.add("circular2")
+gmsh.model.add("circular")
 
-# geological parameters
-radius = 6.0
+# geometry parameters
+radius = 7.0
 height = 70.0
 width = 150.0
-buried_depth = 16.0
+# note that the buried depth must be larger than 0.0m
+buried_depth = 6
 
-# mesh parameters
+
+# constants(no modifications unless necessary)
+sqrt2 = 1.414213562373095
+bias_coef = 0.8
+if buried_depth < bias_coef * radius * 2:
+    bias_coef = 0.8 / (1.6 * radius) * buried_depth
+bias = radius * (1.00 + bias_coef)
 mesh_coef_horizontal = 1.035
 mesh_coef_vertical = 1.06
 
-# constants(no modifications unless necessary)
-bias_coef = 0.8
-sqrt2 = 1.414213562373095
-bias = radius * (1.00 + bias_coef)
 
 gmsh.model.geo.addPoint(0, 0, 0, tag=1)
 gmsh.model.geo.addPoint(width, 0, 0, tag=2)
@@ -26,36 +35,36 @@ gmsh.model.geo.addPoint(width, height, 0, tag=3)
 gmsh.model.geo.addPoint(0, height, 0, tag=4)
 gmsh.model.geo.addPoint(width / 2, 0, 0, tag=5)
 gmsh.model.geo.addPoint(width / 2, height, 0, tag=6)
-gmsh.model.geo.addPoint(0, 70 - buried_depth - radius, 0, tag=7)
-gmsh.model.geo.addPoint(width, 70 - buried_depth - radius, 0, tag=8)
+gmsh.model.geo.addPoint(0, height - buried_depth - radius, 0, tag=7)
+gmsh.model.geo.addPoint(width, height - buried_depth - radius, 0, tag=8)
 
-gmsh.model.geo.addPoint(width / 2 - bias, 70 - buried_depth - radius - bias, 0, tag=11)
-gmsh.model.geo.addPoint(width / 2 + bias, 70 - buried_depth - radius - bias, 0, tag=12)
-gmsh.model.geo.addPoint(width / 2 + bias, 70 - buried_depth - radius + bias, 0, tag=13)
-gmsh.model.geo.addPoint(width / 2 - bias, 70 - buried_depth - radius + bias, 0, tag=14)
-gmsh.model.geo.addPoint(width / 2, 70 - buried_depth - radius - bias, 0, tag=15)
-gmsh.model.geo.addPoint(width / 2 + bias, 70 - buried_depth - radius, 0, tag=16)
-gmsh.model.geo.addPoint(width / 2, 70 - buried_depth - radius + bias, 0, tag=17)
-gmsh.model.geo.addPoint(width / 2 - bias, 70 - buried_depth - radius, 0, tag=18)
+gmsh.model.geo.addPoint(width / 2 - bias, height - buried_depth - radius - bias, 0, tag=11)
+gmsh.model.geo.addPoint(width / 2 + bias, height - buried_depth - radius - bias, 0, tag=12)
+gmsh.model.geo.addPoint(width / 2 + bias, height - buried_depth - radius + bias, 0, tag=13)
+gmsh.model.geo.addPoint(width / 2 - bias, height - buried_depth - radius + bias, 0, tag=14)
+gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius - bias, 0, tag=15)
+gmsh.model.geo.addPoint(width / 2 + bias, height - buried_depth - radius, 0, tag=16)
+gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius + bias, 0, tag=17)
+gmsh.model.geo.addPoint(width / 2 - bias, height - buried_depth - radius, 0, tag=18)
 
-gmsh.model.geo.addPoint(0, 70 - buried_depth - radius - bias, 0, tag=21)
-gmsh.model.geo.addPoint(0, 70 - buried_depth - radius + bias, 0, tag=22)
-gmsh.model.geo.addPoint(width, 70 - buried_depth - radius - bias, 0, tag=23)
-gmsh.model.geo.addPoint(width, 70 - buried_depth - radius + bias, 0, tag=24)
+gmsh.model.geo.addPoint(0, height - buried_depth - radius - bias, 0, tag=21)
+gmsh.model.geo.addPoint(0, height - buried_depth - radius + bias, 0, tag=22)
+gmsh.model.geo.addPoint(width, height - buried_depth - radius - bias, 0, tag=23)
+gmsh.model.geo.addPoint(width, height - buried_depth - radius + bias, 0, tag=24)
 gmsh.model.geo.addPoint(width / 2 - bias, 0, 0, tag=25)
 gmsh.model.geo.addPoint(width / 2 + bias, 0, 0, tag=26)
 gmsh.model.geo.addPoint(width / 2 - bias, height, 0, tag=27)
 gmsh.model.geo.addPoint(width / 2 + bias, height, 0, tag=28)
 
-gmsh.model.geo.addPoint(width / 2 + radius, 70 - buried_depth - radius, 0, tag=31)
-gmsh.model.geo.addPoint(width / 2 + 0.5 * sqrt2 * radius, 70 - buried_depth - radius + 0.5 * sqrt2 * radius, 0, tag=32)
-gmsh.model.geo.addPoint(width / 2, 70 - buried_depth, 0, tag=33)
-gmsh.model.geo.addPoint(width / 2 - 0.5 * sqrt2 * radius, 70 - buried_depth - radius + 0.5 * sqrt2 * radius, 0, tag=34)
-gmsh.model.geo.addPoint(width / 2 - radius, 70 - buried_depth - radius, 0, tag=35)
-gmsh.model.geo.addPoint(width / 2 - 0.5 * sqrt2 * radius, 70 - buried_depth - radius - 0.5 * sqrt2 * radius, 0, tag=36)
-gmsh.model.geo.addPoint(width / 2, 70 - buried_depth - radius * 2, 0, tag=37)
-gmsh.model.geo.addPoint(width / 2 + 0.5 * sqrt2 * radius, 70 - buried_depth - radius - 0.5 * sqrt2 * radius, 0, tag=38)
-gmsh.model.geo.addPoint(width / 2, 70 - buried_depth - radius, 0, tag=40)
+gmsh.model.geo.addPoint(width / 2 + radius, height - buried_depth - radius, 0, tag=31)
+gmsh.model.geo.addPoint(width / 2 + 0.5 * sqrt2 * radius, height - buried_depth - radius + 0.5 * sqrt2 * radius, 0, tag=32)
+gmsh.model.geo.addPoint(width / 2, height - buried_depth, 0, tag=33)
+gmsh.model.geo.addPoint(width / 2 - 0.5 * sqrt2 * radius, height - buried_depth - radius + 0.5 * sqrt2 * radius, 0, tag=34)
+gmsh.model.geo.addPoint(width / 2 - radius, height - buried_depth - radius, 0, tag=35)
+gmsh.model.geo.addPoint(width / 2 - 0.5 * sqrt2 * radius, height - buried_depth - radius - 0.5 * sqrt2 * radius, 0, tag=36)
+gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius * 2, 0, tag=37)
+gmsh.model.geo.addPoint(width / 2 + 0.5 * sqrt2 * radius, height - buried_depth - radius - 0.5 * sqrt2 * radius, 0, tag=38)
+gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius, 0, tag=40)
 
 gmsh.model.geo.addLine(27, 4  , tag=1)
 gmsh.model.geo.addLine(14, 22 , tag=2)
