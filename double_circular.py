@@ -5,7 +5,6 @@
 # Project:
 
 import gmsh
-import sys
 from gmsh import model as gm
 
 # Before using any functions in the Python API, Gmsh must be initialized:
