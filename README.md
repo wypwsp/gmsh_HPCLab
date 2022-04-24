@@ -10,7 +10,7 @@
 
 - ## 联系方式
 
-  2010051@tongji.edu.cn
+  wangqi14@tongji.edu.cn
 
   18221186631-微信同号
 
