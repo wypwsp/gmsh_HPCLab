@@ -9,7 +9,7 @@ from gmsh import model as gm
 
 # Before using any functions in the Python API, Gmsh must be initialized:
 gmsh.initialize()
-gm.add("double circular")
+gm.add("double_circular")
 
 # geometry parameters
 radius = 8.0
