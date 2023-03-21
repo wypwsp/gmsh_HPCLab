@@ -6,9 +6,9 @@ gmsh.model.add("rectangular1")
 # 地层高度 地层宽度 结构埋深
 height_ground = 90.0
 width_ground = 150.0
-buried_depth = 16.0
+buried_depth = 20.0
 # 跨度 高度
-spans = np.array([10, 5, 10, 5])
+spans = np.array([30, 5, 10, 5])
 floors = np.array([10, 5, 10])
 # 土体网格密度（推荐0.2-1.5）
 mesh_seed_soil = 1.2

@@ -12,11 +12,11 @@ gmsh.initialize()
 gm.add("double_circular")
 
 # geometry parameters
-radius = 8.0
+radius = 4.0
 height = 70.0
 width = 150.0
 buried_depth = 15
-separation = 6.
+separation = 5.
 seed_coef = 1.
 # todo 增加第二种情况，即隧道距离较远的时候，需要在中间增加一列surface，相关的程序简图已经在OneNote中绘出
 # constants(no modifications unless necessary)
