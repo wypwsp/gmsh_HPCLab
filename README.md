@@ -12,5 +12,5 @@
 
   wangqi14@tongji.edu.cn
 
-  18221186631-微信同号
+# 暂停更新 代码转移至code_py中
 

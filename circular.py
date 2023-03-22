@@ -18,7 +18,6 @@ width = 150.0
 # note that the buried depth must be larger than 0.0m
 buried_depth = 6
 
-
 # constants(no modifications unless necessary)
 sqrt2 = 1.414213562373095
 bias_coef = 0.8
@@ -27,7 +26,6 @@ if buried_depth < bias_coef * radius * 2:
 bias = radius * (1.00 + bias_coef)
 mesh_coef_horizontal = 1.035
 mesh_coef_vertical = 1.06
-
 
 gmsh.model.geo.addPoint(0, 0, 0, tag=1)
 gmsh.model.geo.addPoint(width, 0, 0, tag=2)
@@ -66,24 +64,24 @@ gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius * 2, 0, tag=37
 gmsh.model.geo.addPoint(width / 2 + 0.5 * sqrt2 * radius, height - buried_depth - radius - 0.5 * sqrt2 * radius, 0, tag=38)
 gmsh.model.geo.addPoint(width / 2, height - buried_depth - radius, 0, tag=40)
 
-gmsh.model.geo.addLine(27, 4  , tag=1)
-gmsh.model.geo.addLine(14, 22 , tag=2)
-gmsh.model.geo.addLine(18, 7  , tag=3)
-gmsh.model.geo.addLine(11, 21 , tag=4)
-gmsh.model.geo.addLine(25, 1  , tag=5)
-gmsh.model.geo.addLine(28, 3  , tag=6)
-gmsh.model.geo.addLine(13, 24 , tag=7)
-gmsh.model.geo.addLine(16, 8  , tag=8)
-gmsh.model.geo.addLine(12, 23 , tag=9)
-gmsh.model.geo.addLine(26, 2  , tag=10)
-gmsh.model.geo.addLine(4 , 22 , tag=11)
-gmsh.model.geo.addLine(22, 7  , tag=12)
-gmsh.model.geo.addLine(7 , 21 , tag=13)
-gmsh.model.geo.addLine(21, 1  , tag=14)
-gmsh.model.geo.addLine(3 , 24 , tag=15)
-gmsh.model.geo.addLine(24, 8  , tag=16)
-gmsh.model.geo.addLine(8 , 23 , tag=17)
-gmsh.model.geo.addLine(23, 2  , tag=18)
+gmsh.model.geo.addLine(27, 4, tag=1)
+gmsh.model.geo.addLine(14, 22, tag=2)
+gmsh.model.geo.addLine(18, 7, tag=3)
+gmsh.model.geo.addLine(11, 21, tag=4)
+gmsh.model.geo.addLine(25, 1, tag=5)
+gmsh.model.geo.addLine(28, 3, tag=6)
+gmsh.model.geo.addLine(13, 24, tag=7)
+gmsh.model.geo.addLine(16, 8, tag=8)
+gmsh.model.geo.addLine(12, 23, tag=9)
+gmsh.model.geo.addLine(26, 2, tag=10)
+gmsh.model.geo.addLine(4, 22, tag=11)
+gmsh.model.geo.addLine(22, 7, tag=12)
+gmsh.model.geo.addLine(7, 21, tag=13)
+gmsh.model.geo.addLine(21, 1, tag=14)
+gmsh.model.geo.addLine(3, 24, tag=15)
+gmsh.model.geo.addLine(24, 8, tag=16)
+gmsh.model.geo.addLine(8, 23, tag=17)
+gmsh.model.geo.addLine(23, 2, tag=18)
 
 gmsh.model.geo.addCircleArc(31, 40, 32, tag=21)
 gmsh.model.geo.addCircleArc(32, 40, 33, tag=22)
@@ -94,14 +92,14 @@ gmsh.model.geo.addCircleArc(36, 40, 37, tag=26)
 gmsh.model.geo.addCircleArc(37, 40, 38, tag=27)
 gmsh.model.geo.addCircleArc(38, 40, 31, tag=28)
 
-gmsh.model.geo.addLine(6, 27,  tag=29)
+gmsh.model.geo.addLine(6, 27, tag=29)
 gmsh.model.geo.addLine(17, 14, tag=30)
 gmsh.model.geo.addLine(15, 11, tag=31)
-gmsh.model.geo.addLine(5, 25,  tag=32)
-gmsh.model.geo.addLine(6, 28,  tag=33)
+gmsh.model.geo.addLine(5, 25, tag=32)
+gmsh.model.geo.addLine(6, 28, tag=33)
 gmsh.model.geo.addLine(17, 13, tag=34)
 gmsh.model.geo.addLine(15, 12, tag=35)
-gmsh.model.geo.addLine(5, 26,  tag=36)
+gmsh.model.geo.addLine(5, 26, tag=36)
 gmsh.model.geo.addLine(31, 16, tag=37)
 gmsh.model.geo.addLine(32, 13, tag=38)
 gmsh.model.geo.addLine(33, 17, tag=39)
@@ -115,10 +113,10 @@ gmsh.model.geo.addLine(16, 13, tag=46)
 gmsh.model.geo.addLine(18, 14, tag=47)
 gmsh.model.geo.addLine(18, 11, tag=48)
 gmsh.model.geo.addLine(14, 27, tag=49)
-gmsh.model.geo.addLine(17, 6,  tag=50)
+gmsh.model.geo.addLine(17, 6, tag=50)
 gmsh.model.geo.addLine(13, 28, tag=51)
 gmsh.model.geo.addLine(11, 25, tag=52)
-gmsh.model.geo.addLine(15, 5,  tag=53)
+gmsh.model.geo.addLine(15, 5, tag=53)
 gmsh.model.geo.addLine(12, 26, tag=54)
 
 gmsh.model.geo.addCurveLoop([1, 11, -2, 49], 1)
@@ -162,7 +160,6 @@ ps17 = gmsh.model.geo.addPlaneSurface([17])
 ps18 = gmsh.model.geo.addPlaneSurface([18])
 ps19 = gmsh.model.geo.addPlaneSurface([19])
 ps20 = gmsh.model.geo.addPlaneSurface([20])
-
 
 gmsh.model.geo.synchronize()
 # basic settings
@@ -269,7 +266,6 @@ gmsh.model.mesh.setTransfiniteCurve(39, 8)
 for i in range(20):
     gmsh.model.mesh.setTransfiniteSurface(i + 1)
 
-
 gmsh.model.addPhysicalGroup(1, [23, 24, 25, 26, 27, 28, 21, 22], 1)
 # Physical Point("top")
 gmsh.model.addPhysicalGroup(0, [33], 11)
@@ -289,8 +285,19 @@ gmsh.model.addPhysicalGroup(0, [36], 17)
 gmsh.model.addPhysicalGroup(0, [34], 18)
 
 gmsh.model.mesh.generate(2)
+
+# 设置图形选项
+gmsh.option.setNumber("General.Terminal", 0)
+gmsh.option.setNumber("Mesh.SurfaceFaces", 1)
+# gmsh.option.setNumber("Mesh.Points", 1)
+gmsh.option.setNumber("View[0].IntervalsType", 3)
+gmsh.option.setNumber("View[0].NbIso", 20)
+gmsh.option.setNumber("General.Axes", 0)
+
+# 保存网格图片
+gmsh.fltk.initialize()
+gmsh.write('mesh_circular.jpg')
 gmsh.fltk.run()
+gmsh.write('circular.msh')
+# 结束gmsh
 gmsh.finalize()
-
-
-
